@@ -1,0 +1,185 @@
+<style>
+  html, body {
+    background-color: #020817 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    overflow-x: hidden !important;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+  }
+  .post-title, .entry-title, .post-header, .post-footer, .comments, #blog-pager, .post-outer-container, .blog-feeds, .sidebar, header, footer, .widget, .popular-posts, .feed-links, .status-msg-wrap {
+    display: none !important;
+  }
+  .post-body, .entry-content, .main-inner, .content-inner, .post, .blog-posts {
+    margin: 0 !important; padding: 0 !important; max-width: 100% !important; width: 100% !important; border: none !important; background: transparent !important;
+  }
+
+  .app-screen { display: none; }
+  .app-screen.active { display: block; }
+</style>
+
+<div style="background: #020817; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; overflow-y: auto; z-index: 99999999; padding: 16px; box-sizing: border-box; color: #fff;">
+
+  <!-- HOME SCREEN -->
+  <div id="screen-home" class="app-screen active">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: #0f172a; padding: 14px 18px; border-radius: 16px; border: 1px solid #1e293b;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="background: linear-gradient(135deg, #2563eb, #0284c7); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">👤</div>
+        <div>
+          <h3 style="margin: 0; color: #ffffff; font-size: 16px; font-weight: 800;">GM Abul Hasan</h3>
+          <span style="color: #38bdf8; font-size: 11px; font-weight: 700;">PRO MEMBER</span>
+        </div>
+      </div>
+      <div style="background: #1e293b; padding: 10px; border-radius: 50%; color: #fbbf24; font-size: 18px;">🔔</div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #0b193c, #1e3a8a, #0284c7); padding: 24px 16px; border-radius: 20px; text-align: center; border: 2px solid #2563eb; margin-bottom: 15px;">
+      <div style="font-size: 32px; font-weight: 900; letter-spacing: 1px; color: #ffffff; text-transform: uppercase;">
+        Earn<span style="color: #38bdf8;">Xpress</span>
+      </div>
+      <p style="margin: 6px 0 16px 0; color: #fbbf24; font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">
+        Complete Tasks • Collect Points • Get Rewards
+      </p>
+
+      <div style="background: #020817; padding: 15px; border-radius: 14px; border: 1px solid #1e293b; width: 92%; margin: 0 auto; box-sizing: border-box;">
+        <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: 700;">TOTAL BALANCE</span>
+        <h1 style="margin: 4px 0 0 0; color: #4ade80; font-size: 36px; font-weight: 900;">💰 0.00</h1>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 10px; margin-bottom: 10px; width: 100%;">
+      <div onclick="openScreen('screen-tasks')" style="flex: 1; background: #0f172a; padding: 16px 8px; border-radius: 14px; text-align: center; border: 1px solid #1e293b; cursor: pointer;">
+        <div style="font-size: 26px;">📋</div>
+        <div style="color: #38bdf8; font-size: 13px; font-weight: 800; margin-top: 5px;">Tasks</div>
+      </div>
+
+      <div onclick="openScreen('screen-rewards')" style="flex: 1; background: #0f172a; padding: 16px 8px; border-radius: 14px; text-align: center; border: 1px solid #1e293b; cursor: pointer;">
+        <div style="font-size: 26px;">🎁</div>
+        <div style="color: #fbbf24; font-size: 13px; font-weight: 800; margin-top: 5px;">Rewards</div>
+      </div>
+
+      <div onclick="openScreen('screen-referral')" style="flex: 1; background: #0f172a; padding: 16px 8px; border-radius: 14px; text-align: center; border: 1px solid #1e293b; cursor: pointer;">
+        <div style="font-size: 26px;">👥</div>
+        <div style="color: #4ade80; font-size: 13px; font-weight: 800; margin-top: 5px;">Referral</div>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 10px; margin-bottom: 15px; width: 100%;">
+      <div onclick="openScreen('screen-wallet')" style="flex: 1; background: #0f172a; padding: 15px; border-radius: 14px; text-align: center; border: 1px solid #1e293b; cursor: pointer;">
+        <div style="font-size: 26px;">👛</div>
+        <div style="color: #c084fc; font-size: 14px; font-weight: 800; margin-top: 5px;">Wallet</div>
+      </div>
+
+      <div onclick="openScreen('screen-withdraw')" style="flex: 1; background: #0f172a; padding: 15px; border-radius: 14px; text-align: center; border: 1px solid #1e293b; cursor: pointer;">
+        <div style="font-size: 26px;">💸</div>
+        <div style="color: #f43f5e; font-size: 14px; font-weight: 800; margin-top: 5px;">Withdraw</div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px;">
+      <div onclick="openScreen('screen-ads')" style="background: linear-gradient(135deg, #2563eb, #1d4ed8); padding: 18px; border-radius: 16px; color: white; display: flex; align-items: center; justify-content: space-between; font-weight: 800; font-size: 15px; border: 1px solid #60a5fa; cursor: pointer;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 22px;">🎬</span>
+          <span>Watch Ads & Earn Points</span>
+        </div>
+        <span style="font-size: 18px;">➔</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WATCH ADS SCREEN -->
+  <div id="screen-ads" class="app-screen">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+      <button onclick="openScreen('screen-home')" style="background: #1e293b; color: #fff; border: 1px solid #334155; padding: 8px 16px; border-radius: 10px; font-weight: 800; cursor: pointer;">⬅ Back</button>
+      <h3 style="margin: 0;">🎬 Watch Ads Zone</h3>
+    </div>
+    
+    <div style="background: #0f172a; padding: 20px; border-radius: 16px; border: 1px solid #1e293b; text-align: center; margin-bottom: 12px;">
+      <h4 style="margin: 0 0 10px 0; color: #38bdf8;">Video Ad #1</h4>
+      <p style="color: #94a3b8; font-size: 13px; margin-bottom: 15px;">Watch 15 seconds to earn +50 Points</p>
+      <button onclick="alert('Ad Loading...')" style="background: #2563eb; color: white; border: none; padding: 12px 24px; border-radius: 10px; font-weight: 800; cursor: pointer;">Watch Video</button>
+    </div>
+  </div>
+
+  <!-- WITHDRAW SCREEN -->
+  <div id="screen-withdraw" class="app-screen">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+      <button onclick="openScreen('screen-home')" style="background: #1e293b; color: #fff; border: 1px solid #334155; padding: 8px 16px; border-radius: 10px; font-weight: 800; cursor: pointer;">⬅ Back</button>
+      <h3 style="margin: 0;">💸 Withdraw Money</h3>
+    </div>
+
+    <div style="background: #0f172a; padding: 20px; border-radius: 16px; border: 1px solid #1e293b;">
+      <label style="display: block; color: #94a3b8; font-size: 13px; margin-bottom: 8px;">Select Payment Method:</label>
+      <select style="width: 100%; padding: 12px; background: #020817; color: #fff; border: 1px solid #334155; border-radius: 10px; margin-bottom: 15px;">
+        <option>bKash Personal</option>
+        <option>Nagad Personal</option>
+        <option>Rocket</option>
+      </select>
+
+      <label style="display: block; color: #94a3b8; font-size: 13px; margin-bottom: 8px;">Account Number:</label>
+      <input type="text" placeholder="017XXXXXXXX" style="width: 100%; padding: 12px; background: #020817; color: #fff; border: 1px solid #334155; border-radius: 10px; margin-bottom: 15px; box-sizing: border-box;"/>
+
+      <button onclick="alert('Withdraw request submitted!')" style="width: 100%; background: #4ade80; color: #020817; border: none; padding: 14px; border-radius: 10px; font-weight: 800; font-size: 16px; cursor: pointer;">Submit Request</button>
+    </div>
+  </div>
+
+  <!-- TASKS SCREEN -->
+  <div id="screen-tasks" class="app-screen">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+      <button onclick="openScreen('screen-home')" style="background: #1e293b; color: #fff; border: 1px solid #334155; padding: 8px 16px; border-radius: 10px; font-weight: 800; cursor: pointer;">⬅ Back</button>
+      <h3 style="margin: 0;">📋 Daily Tasks</h3>
+    </div>
+    <div style="background: #0f172a; padding: 16px; border-radius: 14px; border: 1px solid #1e293b; color: #94a3b8; text-align: center;">
+      More tasks coming soon!
+    </div>
+  </div>
+
+  <!-- REWARDS SCREEN -->
+  <div id="screen-rewards" class="app-screen">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+      <button onclick="openScreen('screen-home')" style="background: #1e293b; color: #fff; border: 1px solid #334155; padding: 8px 16px; border-radius: 10px; font-weight: 800; cursor: pointer;">⬅ Back</button>
+      <h3 style="margin: 0;">🎁 Claim Rewards</h3>
+    </div>
+    <div style="background: #0f172a; padding: 16px; border-radius: 14px; border: 1px solid #1e293b; text-align: center;">
+      <p style="color: #fbbf24; font-weight: 800;">Daily Bonus: +10 Points</p>
+      <button onclick="alert('Bonus Claimed!')" style="background: #fbbf24; color: #000; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 800; cursor: pointer;">Claim Now</button>
+    </div>
+  </div>
+
+  <!-- REFERRAL SCREEN -->
+  <div id="screen-referral" class="app-screen">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+      <button onclick="openScreen('screen-home')" style="background: #1e293b; color: #fff; border: 1px solid #334155; padding: 8px 16px; border-radius: 10px; font-weight: 800; cursor: pointer;">⬅ Back</button>
+      <h3 style="margin: 0;">👥 Invite & Earn</h3>
+    </div>
+    <div style="background: #0f172a; padding: 16px; border-radius: 14px; border: 1px solid #1e293b; text-align: center;">
+      <p style="color: #94a3b8; font-size: 13px;">Your Referral Link:</p>
+      <input type="text" value="https://earnxpress110.blogspot.com?ref=123" readonly style="width: 100%; padding: 10px; background: #020817; color: #38bdf8; border: 1px solid #334155; border-radius: 8px; text-align: center; box-sizing: border-box;"/>
+    </div>
+  </div>
+
+  <!-- WALLET SCREEN -->
+  <div id="screen-wallet" class="app-screen">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+      <button onclick="openScreen('screen-home')" style="background: #1e293b; color: #fff; border: 1px solid #334155; padding: 8px 16px; border-radius: 10px; font-weight: 800; cursor: pointer;">⬅ Back</button>
+      <h3 style="margin: 0;">👛 My Wallet</h3>
+    </div>
+    <div style="background: #0f172a; padding: 16px; border-radius: 14px; border: 1px solid #1e293b; text-align: center;">
+      <h2 style="color: #c084fc; margin: 0;">Total Points: 0</h2>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function openScreen(screenId) {
+    var screens = document.querySelectorAll('.app-screen');
+    screens.forEach(function(scr) {
+      scr.classList.remove('active');
+    });
+    document.getElementById(screenId).classList.add('active');
+  }
+</script>
