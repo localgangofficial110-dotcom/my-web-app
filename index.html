@@ -71,6 +71,7 @@
             border-radius: 50%;
             color: #fbbf24;
             font-size: 18px;
+            cursor: pointer;
         }
 
         .balance-card {
@@ -163,7 +164,6 @@
 
         .color-blue { color: #38bdf8; }
         .color-yellow { color: #fbbf24; }
-        .color-green { color: #4ade80; }
         .color-pink { color: #f0abfc; }
         .color-red { color: #f87171; }
 
@@ -177,6 +177,7 @@
             font-weight: 700;
             font-size: 15px;
             margin-bottom: 20px;
+            cursor: pointer;
         }
 
         .referral-section {
@@ -260,6 +261,13 @@
             font-size: 13px;
             font-weight: 700;
         }
+
+        .empty-ref {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
+            padding: 15px 0;
+        }
     </style>
 </head>
 <body>
@@ -269,8 +277,9 @@
         <div class="user-info">
             <div class="avatar">👤</div>
             <div class="user-details">
-                <h3>জিএম আবুল হাসান</h3>
-                <span>প্রো সদস্য</span>
+                <!-- ইউজার নাম ডাইনামিকলি দেখানোর জন্য id যুক্ত করা হয়েছে -->
+                <h3 id="user-name">ইউজার নেম...</h3>
+                <span id="user-role">নতুন সদস্য</span>
             </div>
         </div>
         <div class="notification-icon">🔔</div>
@@ -281,7 +290,7 @@
         <p>কাজগুলো সম্পন্ন করুন • পয়েন্ট সংগ্রহ করুন • পুরস্কার গ্রহণ করুন</p>
         <div class="balance-box">
             <span>মোট ব্যালেন্স:</span>
-            <h1>💰 ০.০০</h1>
+            <h1 id="user-balance">💰 ০.০০</h1>
         </div>
     </div>
 
@@ -319,45 +328,60 @@
     <div class="referral-section">
         <div class="ref-header">
             <h3>👥 আপনার রেফারেলসমূহ</h3>
-            <span class="ref-badge">মোট: ৩ জন</span>
+            <span class="ref-badge" id="ref-count">মোট: ০ জন</span>
         </div>
 
-        <div class="ref-list">
-            <div class="ref-card">
-                <div class="ref-user">
-                    <div class="ref-avatar">👤</div>
-                    <div>
-                        <div class="ref-name">রাহাত হোসেন</div>
-                        <div class="ref-date">আজ, ১০:১৫ AM</div>
-                    </div>
-                </div>
-                <div class="ref-status">+৫০ পয়েন্ট</div>
-            </div>
-
-            <div class="ref-card">
-                <div class="ref-user">
-                    <div class="ref-avatar">👤</div>
-                    <div>
-                        <div class="ref-name">সাকিব আহমেদ</div>
-                        <div class="ref-date">গতকাল</div>
-                    </div>
-                </div>
-                <div class="ref-status">+৫০ পয়েন্ট</div>
-            </div>
-
-            <div class="ref-card">
-                <div class="ref-user">
-                    <div class="ref-avatar">👤</div>
-                    <div>
-                        <div class="ref-name">মেহেদী হাসান</div>
-                        <div class="ref-date">১২ অক্টোবর</div>
-                    </div>
-                </div>
-                <div class="ref-status">+৫০ পয়েন্ট</div>
-            </div>
+        <div class="ref-list" id="ref-list-container">
+            <!-- রেফারেল না থাকলে এই মেসেজটা থাকবে -->
+            <div class="empty-ref">আপনি এখনো কাউকে রেফার করেননি।</div>
         </div>
     </div>
 </div>
+
+<script>
+    // ডামি বা লোকাল ডাটা (Firebase যুক্ত করার পর এগুলো Firebase ডাটাবেস থেকে অটোমেটিক আসবে)
+    const currentUser = {
+        name: "ব্যবহারকারীর নাম", // লগইন করার পর আসল নাম শো করবে
+        role: "সাধারণ সদস্য",
+        balance: "০.০০",
+        referrals: [
+            // যখন কেউ রেফার করবে, তখন নিচে নতুন ডাটা যুক্ত হবে
+            // { name: "নতুন ব্যবহারকারী", date: "আজ", reward: "+৫০ পয়েন্ট" }
+        ]
+    };
+
+    // পেজ লোড হওয়ার সাথে সাথে ডাটা আপডেট করার ফাংশন
+    function loadUserData() {
+        document.getElementById('user-name').innerText = currentUser.name;
+        document.getElementById('user-role').innerText = currentUser.role;
+        document.getElementById('user-balance').innerText = "💰 " + currentUser.balance;
+        document.getElementById('ref-count').innerText = "মোট: " + currentUser.referrals.length + " জন";
+
+        const refContainer = document.getElementById('ref-list-container');
+        
+        if (currentUser.referrals.length > 0) {
+            refContainer.innerHTML = "";
+            currentUser.referrals.forEach(ref => {
+                const card = `
+                    <div class="ref-card">
+                        <div class="ref-user">
+                            <div class="ref-avatar">👤</div>
+                            <div>
+                                <div class="ref-name">${ref.name}</div>
+                                <div class="ref-date">${ref.date}</div>
+                            </div>
+                        </div>
+                        <div class="ref-status">${ref.reward}</div>
+                    </div>
+                `;
+                refContainer.innerHTML += card;
+            });
+        }
+    }
+
+    // ডাটা লোড করা
+    loadUserData();
+</script>
 
 </body>
 </html>
