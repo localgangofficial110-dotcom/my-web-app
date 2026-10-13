@@ -406,27 +406,31 @@ window.onload = function() {
     // ডাটা লোড করা
     loadUserData();
 </script>
+// Load Data
+    loadUserData();
+
+    // Splash Screen Function
+    function showSplashScreen() {
+        const splash = document.getElementById('splash-screen');
+        splash.style.display = 'flex';
+        splash.style.opacity = '1';
+        
+        setTimeout(() => {
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 500);
+        }, 2500);
+    }
+
+    // Trigger Splash Screen on Page Load
+    window.onload = function() {
+        if (typeof loadUserData === 'function') {
+            loadUserData();
+        }
+        showSplashScreen();
+    };
+</script>
 
 </body>
 </html>
-// Function to show splash screen for 2.5 seconds
-function showSplashScreen() {
-    const splash = document.getElementById('splash-screen');
-    splash.style.display = 'flex';
-    splash.style.opacity = '1';
-    
-    setTimeout(() => {
-        splash.style.opacity = '0';
-        setTimeout(() => {
-            splash.style.display = 'none';
-        }, 500);
-    }, 2500);
-}
-
-// Trigger splash screen on page load
-window.onload = function() {
-    if (typeof loadUserData === 'function') {
-        loadUserData();
-    }
-    showSplashScreen();
-};
