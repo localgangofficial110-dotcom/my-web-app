@@ -7,6 +7,25 @@
     <link rel="icon" href="logo.png" type="image/png">
 <link rel="manifest" href="manifest.json">
     <style>
+        // Function to show splash screen for 2.5 seconds
+function showSplashScreen() {
+    const splash = document.getElementById('splash-screen');
+    splash.style.display = 'flex';
+    splash.style.opacity = '1';
+    
+    setTimeout(() => {
+        splash.style.opacity = '0';
+        setTimeout(() => {
+            splash.style.display = 'none';
+        }, 500);
+    }, 2500);
+}
+
+// Trigger splash screen on page load
+window.onload = function() {
+    loadUserData();
+    showSplashScreen();
+};
         * {
             box-sizing: border-box;
             margin: 0;
