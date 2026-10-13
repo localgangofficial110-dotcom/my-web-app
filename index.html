@@ -292,7 +292,10 @@ window.onload = function() {
     </style>
 </head>
 <body>
-
+<!-- Splash Screen Banner -->
+<div id="splash-screen">
+    <img src="splash.png" alt="EarnXpress Welcome">
+</div>
 <div class="container">
     <div class="header">
         <div class="user-info">
@@ -406,3 +409,24 @@ window.onload = function() {
 
 </body>
 </html>
+// Function to show splash screen for 2.5 seconds
+function showSplashScreen() {
+    const splash = document.getElementById('splash-screen');
+    splash.style.display = 'flex';
+    splash.style.opacity = '1';
+    
+    setTimeout(() => {
+        splash.style.opacity = '0';
+        setTimeout(() => {
+            splash.style.display = 'none';
+        }, 500);
+    }, 2500);
+}
+
+// Trigger splash screen on page load
+window.onload = function() {
+    if (typeof loadUserData === 'function') {
+        loadUserData();
+    }
+    showSplashScreen();
+};
