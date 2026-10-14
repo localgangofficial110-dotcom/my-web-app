@@ -211,7 +211,7 @@
             border-radius: 6px; cursor: pointer; font-weight: bold;
         }
         .auth-box .switch-btn {
-            background: none; color: #38bdf8; margin-top: 10px; font-size: 13px;
+            background: none; color: #38bdf8; margin-top: 10px; font-size: 13px; width: 100%; border: none; cursor: pointer;
         }
 
         /* Splash Screen & Loading Bar Style */
@@ -273,7 +273,7 @@
         </div>
     </div>
 
-    <!-- Login / Signup Form (লগইন না থাকলে এটি দেখাবে) -->
+    <!-- Login / Signup Form -->
     <div id="auth-container" style="display: none;">
         <div class="auth-box">
             <!-- Register Form -->
@@ -361,20 +361,21 @@
         </div>
     </div>
 
-    <!-- Firebase & Auth Logic Script -->
+    <!-- Firebase SDK & Logic -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+        // আপনার সঠিক ফায়ারবেস কনফিগারেশন
         const firebaseConfig = {
-            apiKey: "AIzaSyBUHVpTpA5BtoeKJkjT4yxj3SF1zb3cg",
-            authDomain: "earnxpress-f04d1.firebaseapp.com",
-            projectId: "earnxpress-f04d1",
-            storageBucket: "earnxpress-f04d1.firebasestorage.app",
-            messagingSenderId: "972713524880",
-            appId: "1:972713524880:web:a2b1f45f4e0344d88aa215",
-            measurementId: "G-9HNTM0H2NV"
+          apiKey: "AIzaSyBUHhVpTpaA5BtoeKJkjT4yxj3SF1zb3cg",
+          authDomain: "earnxpress-f04d1.firebaseapp.com",
+          projectId: "earnxpress-f04d1",
+          storageBucket: "earnxpress-f04d1.firebasestorage.app",
+          messagingSenderId: "972713524880",
+          appId: "1:972713524880:web:a2b1f45f4e0344d88aa215",
+          measurementId: "G-9HNTM0H2NV"
         };
 
         const app = initializeApp(firebaseConfig);
