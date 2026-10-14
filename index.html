@@ -467,8 +467,7 @@
                     const data = snap.data();
                     document.getElementById('user-name').innerText = data.name || "ব্যবহারকারী";
                     document.getElementById('user-role').innerText = data.role || "সক্রিয় সদস্য";
-                    let userBalance = data.balance ? parseFloat(data.balance) : 0.00;
-document.getElementById('user-balance').innerText = "💰 " + userBalance.toFixed(2);
+                    document.getElementById('user-balance').innerText = "💰 " + (parseFloat(data.balance) || 0).toFixed(2);
                     document.getElementById('ref-count').innerText = "মোট: " + (data.referrals ? data.referrals.length : 0) + " জন";
                 }
             } else {
