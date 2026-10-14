@@ -280,6 +280,31 @@
     </div>
 
     <!-- Login / Signup Form -->
+    <!-- Task Modal -->
+<div id="task-modal" style="display: none; position: fixed; inset: 0; background: rgba(2,8,23,0.9); z-index: 9999; justify-content: center; align-items: center; padding: 20px;">
+    <div style="background: #0f172a; border: 1px solid #1e293b; padding: 20px; border-radius: 12px; width: 100%; max-width: 400px; box-sizing: border-box; color: #fff;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h3 style="margin: 0; font-size: 18px;">Available Tasks</h3>
+            <span onclick="closeTaskModal()" style="cursor: pointer; font-size: 18px; color: #94a3b8;">✕</span>
+        </div>
+        
+        <div style="background: #1e293b; padding: 12px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div style="font-weight: bold; font-size: 14px;">Watch Daily Video</div>
+                <div style="font-size: 12px; color: #38bdf8;">Reward: +0.50</div>
+            </div>
+            <button onclick="completeTask(0.50)" style="background: #4f46e5; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">Complete</button>
+        </div>
+
+        <div style="background: #1e1b4b; padding: 12px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div style="font-weight: bold; font-size: 14px;">Join Telegram Channel</div>
+                <div style="font-size: 12px; color: #facc15;">Reward: +1.00</div>
+            </div>
+            <button onclick="completeTask(1.00)" style="background: #4f46e5; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">Complete</button>
+        </div>
+    </div>
+</div>
     <div id="auth-container" style="display: none;">
         <div class="auth-box">
             <!-- Register Form -->
