@@ -3,49 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>আর্ন এক্সপ্রেস</title>
-    <link rel="icon" href="logo.png" type="image/png">
-<link rel="manifest" href="manifest.json">
+    <title>EarnXpress</title>
     <style>
-        // Function to show splash screen for 2.5 seconds
-function showSplashScreen() {
-    const splash = document.getElementById('splash-screen');
-    splash.style.display = 'flex';
-    splash.style.opacity = '1';
-    
-    setTimeout(() => {
-        splash.style.opacity = '0';
-        setTimeout(() => {
-            splash.style.display = 'none';
-        }, 500);
-    }, 2500);
-}
-
-// Trigger splash screen on page load
-window.onload = function() {
-    loadUserData();
-    showSplashScreen();
-};
-        * {
-            box-sizing: border-box;
+        body {
+            font-family: sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-        }
-
-        body {
             background-color: #020817;
-            color: #ffffff;
+            color: #fff;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             min-height: 100vh;
-            padding: 15px;
         }
 
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 400px;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .header {
@@ -53,234 +29,150 @@ window.onload = function() {
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-            background: #0f172a;
-            padding: 12px 16px;
-            border-radius: 14px;
         }
 
         .user-info {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .avatar {
-            width: 48px;
-            height: 48px;
+            font-size: 24px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #2563eb, #0284c7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
         }
 
         .user-details h3 {
+            margin: 0;
             font-size: 16px;
-            color: #ffffff;
         }
 
         .user-details span {
-            color: #38bdf8;
-            font-size: 12px;
-            font-weight: 700;
+            color: #94a3b8;
+            font-size: 14px;
         }
 
         .notification-icon {
-            background: #1e293b;
-            padding: 10px;
-            border-radius: 50%;
-            color: #fbbf24;
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
         }
 
         .balance-card {
-            background: linear-gradient(135deg, #0b193c, #1e3a8a, #0284c7);
-            padding: 24px 16px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, #4f46e5, #9333ea);
+            padding: 20px;
+            border-radius: 12px;
             text-align: center;
             margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
         .balance-card h2 {
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            margin: 0 0 5px 0;
+            font-size: 22px;
         }
 
-        .balance-card h2 span {
-            color: #38bdf8;
+        .balance-card span {
+            color: #00f2fe;
         }
 
         .balance-card p {
-            margin: 6px 0 16px 0;
-            color: #fbbf24;
-            font-size: 13px;
-            font-weight: 600;
+            margin: 0 0 15px 0;
+            color: #cbd5e1;
+            font-size: 12px;
         }
 
         .balance-box {
-            background: #020817;
-            padding: 16px;
-            border-radius: 14px;
-            border: 1px solid #1e293b;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 8px;
         }
 
         .balance-box span {
             color: #94a3b8;
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 12px;
         }
 
         .balance-box h1 {
-            color: #4ade80;
-            font-size: 32px;
-            font-weight: 900;
+            margin: 5px 0 0 0;
+            font-size: 24px;
+            color: #fff;
         }
 
-        .menu-grid {
+        .menu-grid, .menu-grid-2 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 12px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
         .menu-grid-2 {
-            display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .menu-item {
             background: #0f172a;
-            padding: 20px 10px;
-            border-radius: 16px;
-            text-align: center;
             border: 1px solid #1e293b;
+            padding: 15px 10px;
+            border-radius: 10px;
+            text-align: center;
             cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .menu-item:active {
-            transform: scale(0.96);
         }
 
         .menu-item .icon {
-            font-size: 32px;
-            margin-bottom: 6px;
+            font-size: 20px;
+            margin-bottom: 5px;
         }
 
         .menu-item .title {
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: bold;
         }
 
         .color-blue { color: #38bdf8; }
-        .color-yellow { color: #fbbf24; }
-        .color-pink { color: #f0abfc; }
+        .color-yellow { color: #facc15; }
+        .color-pink { color: #f472b6; }
         .color-red { color: #f87171; }
 
         .ad-banner {
-            background: linear-gradient(90deg, #2563eb, #1d4ed8);
-            padding: 16px;
-            border-radius: 16px;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            padding: 12px 15px;
+            border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             margin-bottom: 20px;
             cursor: pointer;
         }
 
         .referral-section {
             background: #0f172a;
-            border-radius: 20px;
-            padding: 18px;
             border: 1px solid #1e293b;
+            padding: 15px;
+            border-radius: 10px;
         }
 
         .ref-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #1e293b;
+            margin-bottom: 10px;
         }
 
         .ref-header h3 {
-            font-size: 17px;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin: 0;
+            font-size: 14px;
         }
 
         .ref-badge {
-            background: #2563eb;
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .ref-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .ref-card {
             background: #1e293b;
-            padding: 12px 14px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .ref-user {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .ref-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: #334155;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
-
-        .ref-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: #f1f5f9;
-        }
-
-        .ref-date {
-            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 12px;
             color: #94a3b8;
-        }
-
-        .ref-status {
-            color: #4ade80;
-            font-size: 13px;
-            font-weight: 700;
         }
 
         .empty-ref {
@@ -289,196 +181,283 @@ window.onload = function() {
             font-size: 14px;
             padding: 15px 0;
         }
-            /* Splash Screen & Loading Bar Style */
-#splash-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #020817;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-    transition: opacity 0.5s ease;
-}
 
-#splash-screen img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    object-position: center;
-}
+        /* Auth Form Modal / Box */
+        #auth-container {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: #020817;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9998;
+        }
+        .auth-box {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            width: 300px;
+        }
+        .auth-box h3 { margin-top: 0; text-align: center; }
+        .auth-box input {
+            width: 100%; padding: 10px; margin: 8px 0;
+            background: #020817; border: 1px solid #334155;
+            color: #fff; border-radius: 6px; box-sizing: border-box;
+        }
+        .auth-box button {
+            width: 100%; padding: 10px; margin-top: 10px;
+            background: #4f46e5; color: #fff; border: none;
+            border-radius: 6px; cursor: pointer; font-weight: bold;
+        }
+        .auth-box .switch-btn {
+            background: none; color: #38bdf8; margin-top: 10px; font-size: 13px;
+        }
 
-.loading-bar-container {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    overflow: hidden;
-}
+        /* Splash Screen & Loading Bar Style */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #020817;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.5s ease;
+        }
 
-.loading-bar {
-    width: 0%;
-    height: 100%;
-    background: #00f2fe;
-    border-radius: 4px;
-    animation: loadProgress 2.5s linear forwards;
-}
+        #splash-screen img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            object-position: center;
+        }
 
-@keyframes loadProgress {
-    0% { width: 0%; }
-    100% { width: 100%; }
-}
+        .loading-bar-container {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .loading-bar {
+            width: 0%;
+            height: 100%;
+            background: #00f2fe;
+            border-radius: 4px;
+            animation: loadProgress 2.5s linear forwards;
+        }
+
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
     </style>
 </head>
 <body>
-<!-- Splash Screen Banner -->
-<div id="splash-screen">
-    <img src="splash.png" alt="EarnXpress Welcome">
-    <div class="loading-bar-container">
-        <div class="loading-bar"></div>
+
+    <!-- Splash Screen Banner -->
+    <div id="splash-screen">
+        <img src="splash.png" alt="EarnXpress Welcome">
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
+        </div>
     </div>
-</div>
-<div class="container">
-    <div class="header">
-        <div class="user-info">
-            <div class="avatar">👤</div>
-            <div class="user-details">
-                <!-- ইউজার নাম ডাইনামিকলি দেখানোর জন্য id যুক্ত করা হয়েছে -->
-                <h3 id="user-name">ইউজার নেম...</h3>
-                <span id="user-role">নতুন সদস্য</span>
+
+    <!-- Login / Signup Form (লগইন না থাকলে এটি দেখাবে) -->
+    <div id="auth-container" style="display: none;">
+        <div class="auth-box">
+            <!-- Register Form -->
+            <div id="signup-form">
+                <h3>রেজিস্ট্রেশন করুন</h3>
+                <input type="text" id="s-name" placeholder="আপনার নাম">
+                <input type="email" id="s-email" placeholder="ইমেইল">
+                <input type="password" id="s-pass" placeholder="পাসওয়ার্ড">
+                <button onclick="handleRegister()">অ্যাকাউন্ট তৈরি</button>
+                <button class="switch-btn" onclick="toggleAuthMode('login')">ইতিমধ্যে অ্যাকাউন্ট আছে? লগইন করুন</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form" style="display: none;">
+                <h3>লগইন করুন</h3>
+                <input type="email" id="l-email" placeholder="ইমেইল">
+                <input type="password" id="l-pass" placeholder="পাসওয়ার্ড">
+                <button onclick="handleLogin()">প্রবেশ করুন</button>
+                <button class="switch-btn" onclick="toggleAuthMode('signup')">নতুন অ্যাকাউন্ট খুলুন</button>
             </div>
         </div>
-        <div class="notification-icon">🔔</div>
     </div>
 
-    <div class="balance-card">
-        <h2>আর্ন <span>এক্সপ্রেস</span></h2>
-        <p>কাজগুলো সম্পন্ন করুন • পয়েন্ট সংগ্রহ করুন • পুরস্কার গ্রহণ করুন</p>
-        <div class="balance-box">
-            <span>মোট ব্যালেন্স:</span>
-            <h1 id="user-balance">💰 ০.০০</h1>
+    <!-- Main App Container -->
+    <div class="container" id="main-app" style="display: none;">
+        <div class="header">
+            <div class="user-info">
+                <div class="avatar">👤</div>
+                <div class="user-details">
+                    <h3 id="user-name">ইউজার নেম...</h3>
+                    <span id="user-role">সক্রিয় সদস্য</span>
+                </div>
+            </div>
+            <div class="notification-icon" onclick="handleLogout()" title="লগআউট">🚪</div>
+        </div>
+
+        <div class="balance-card">
+            <h2>আর্ন <span>এক্সপ্রেস</span></h2>
+            <p>কাজগুলো সম্পন্ন করুন • পয়েন্ট সংগ্রহ করুন • পুরস্কার গ্রহণ করুন</p>
+            <div class="balance-box">
+                <span>মোট ব্যালেন্স:</span>
+                <h1 id="user-balance">💰 ০.০০</h1>
+            </div>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="icon">📋</div>
+                <div class="title color-blue">কাজ</div>
+            </div>
+            <div class="menu-item">
+                <div class="icon">🎁</div>
+                <div class="title color-yellow">পুরস্কার</div>
+            </div>
+            <div class="menu-item">
+                <div class="icon">👥</div>
+                <div class="title color-blue">রেফারেল</div>
+            </div>
+        </div>
+
+        <div class="menu-grid-2">
+            <div class="menu-item">
+                <div class="icon">👛</div>
+                <div class="title color-pink">ওয়ালেট</div>
+            </div>
+            <div class="menu-item">
+                <div class="icon">💸</div>
+                <div class="title color-red">প্রত্যাহার</div>
+            </div>
+        </div>
+
+        <div class="ad-banner">
+            <span>🎬 বিজ্ঞাপন দেখুন ও পয়েন্ট অর্জন করুন</span>
+            <span>➔</span>
+        </div>
+
+        <div class="referral-section">
+            <div class="ref-header">
+                <h3>👥 আপনার রেফারেলসমূহ</h3>
+                <span class="ref-badge" id="ref-count">মোট: ০ জন</span>
+            </div>
+            <div class="ref-list" id="ref-list-container">
+                <div class="empty-ref">আপনি এখনো কাউকে রেফার করেননি।</div>
+            </div>
         </div>
     </div>
 
-    <div class="menu-grid">
-        <div class="menu-item">
-            <div class="icon">📋</div>
-            <div class="title color-blue">কাজ</div>
-        </div>
-        <div class="menu-item">
-            <div class="icon">🎁</div>
-            <div class="title color-yellow">পুরস্কার</div>
-        </div>
-        <div class="menu-item">
-            <div class="icon">👥</div>
-            <div class="title color-blue">রেফারেল</div>
-        </div>
-    </div>
+    <!-- Firebase & Auth Logic Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    <div class="menu-grid-2">
-        <div class="menu-item">
-            <div class="icon">👛</div>
-            <div class="title color-pink">ওয়ালেট</div>
-        </div>
-        <div class="menu-item">
-            <div class="icon">💸</div>
-            <div class="title color-red">প্রত্যাহার</div>
-        </div>
-    </div>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBUHVpTpA5BtoeKJkjT4yxj3SF1zb3cg",
+            authDomain: "earnxpress-f04d1.firebaseapp.com",
+            projectId: "earnxpress-f04d1",
+            storageBucket: "earnxpress-f04d1.firebasestorage.app",
+            messagingSenderId: "972713524880",
+            appId: "1:972713524880:web:a2b1f45f4e0344d88aa215",
+            measurementId: "G-9HNTM0H2NV"
+        };
 
-    <div class="ad-banner">
-        <span>🎬 বিজ্ঞাপন দেখুন ও পয়েন্ট অর্জন করুন</span>
-        <span>➔</span>
-    </div>
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
 
-    <div class="referral-section">
-        <div class="ref-header">
-            <h3>👥 আপনার রেফারেলসমূহ</h3>
-            <span class="ref-badge" id="ref-count">মোট: ০ জন</span>
-        </div>
-
-        <div class="ref-list" id="ref-list-container">
-            <!-- রেফারেল না থাকলে এই মেসেজটা থাকবে -->
-            <div class="empty-ref">আপনি এখনো কাউকে রেফার করেননি।</div>
-        </div>
-    </div>
-</div>
-
-<script>
-    // ডামি বা লোকাল ডাটা (Firebase যুক্ত করার পর এগুলো Firebase ডাটাবেস থেকে অটোমেটিক আসবে)
-    const currentUser = {
-        name: "ব্যবহারকারীর নাম", // লগইন করার পর আসল নাম শো করবে
-        role: "সাধারণ সদস্য",
-        balance: "০.০০",
-        referrals: [
-            // যখন কেউ রেফার করবে, তখন নিচে নতুন ডাটা যুক্ত হবে
-            // { name: "নতুন ব্যবহারকারী", date: "আজ", reward: "+৫০ পয়েন্ট" }
-        ]
-    };
-
-    // পেজ লোড হওয়ার সাথে সাথে ডাটা আপডেট করার ফাংশন
-    function loadUserData() {
-        document.getElementById('user-name').innerText = currentUser.name;
-        document.getElementById('user-role').innerText = currentUser.role;
-        document.getElementById('user-balance').innerText = "💰 " + currentUser.balance;
-        document.getElementById('ref-count').innerText = "মোট: " + currentUser.referrals.length + " জন";
-
-        const refContainer = document.getElementById('ref-list-container');
-        
-        if (currentUser.referrals.length > 0) {
-            refContainer.innerHTML = "";
-            currentUser.referrals.forEach(ref => {
-                const card = `
-                    <div class="ref-card">
-                        <div class="ref-user">
-                            <div class="ref-avatar">👤</div>
-                            <div>
-                                <div class="ref-name">${ref.name}</div>
-                                <div class="ref-date">${ref.date}</div>
-                            </div>
-                        </div>
-                        <div class="ref-status">${ref.reward}</div>
-                    </div>
-                `;
-                refContainer.innerHTML += card;
-            });
+        // Switch between Login and Signup forms
+        window.toggleAuthMode = (mode) => {
+            if(mode === 'login') {
+                document.getElementById('signup-form').style.display = 'none';
+                document.getElementById('login-form').style.display = 'block';
+            } else {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('signup-form').style.display = 'block';
+            }
         }
-    }
 
-   
-// Load Data
-    loadUserData();
+        // Register Function
+        window.handleRegister = async () => {
+            const name = document.getElementById('s-name').value;
+            const email = document.getElementById('s-email').value;
+            const pass = document.getElementById('s-pass').value;
+            try {
+                const res = await createUserWithEmailAndPassword(auth, email, pass);
+                await setDoc(doc(db, "users", res.user.uid), {
+                    name: name,
+                    email: email,
+                    balance: "০.০০",
+                    role: "সক্রিয় সদস্য",
+                    referrals: []
+                });
+                alert("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!");
+            } catch (err) { alert(err.message); }
+        }
 
-    // Splash Screen Function
-    function showSplashScreen() {
-        const splash = document.getElementById('splash-screen');
-        splash.style.display = 'flex';
-        splash.style.opacity = '1';
-        
-        setTimeout(() => {
-            splash.style.opacity = '0';
+        // Login Function
+        window.handleLogin = async () => {
+            const email = document.getElementById('l-email').value;
+            const pass = document.getElementById('l-pass').value;
+            try {
+                await signInWithEmailAndPassword(auth, email, pass);
+            } catch (err) { alert(err.message); }
+        }
+
+        // Logout Function
+        window.handleLogout = async () => {
+            await signOut(auth);
+        }
+
+        // Auth State Observer
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                document.getElementById('auth-container').style.display = 'none';
+                document.getElementById('main-app').style.display = 'block';
+                
+                const snap = await getDoc(doc(db, "users", user.uid));
+                if (snap.exists()) {
+                    const data = snap.data();
+                    document.getElementById('user-name').innerText = data.name || "ব্যবহারকারী";
+                    document.getElementById('user-role').innerText = data.role || "সক্রিয় সদস্য";
+                    document.getElementById('user-balance').innerText = "💰 " + (data.balance || "০.০০");
+                    document.getElementById('ref-count').innerText = "মোট: " + (data.referrals ? data.referrals.length : 0) + " জন";
+                }
+            } else {
+                document.getElementById('main-app').style.display = 'none';
+                document.getElementById('auth-container').style.display = 'flex';
+            }
+        });
+
+        // Splash Screen Function
+        function showSplashScreen() {
+            const splash = document.getElementById('splash-screen');
             setTimeout(() => {
-                splash.style.display = 'none';
-            }, 500);
-        }, 2500);
-    }
-
-    // Trigger Splash Screen on Page Load
-    window.onload = function() {
-        if (typeof loadUserData === 'function') {
-            loadUserData();
+                splash.style.opacity = '0';
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 500);
+            }, 2500);
         }
-        showSplashScreen();
-    };
-</script>
 
+        window.onload = function() {
+            showSplashScreen();
+        };
+    </script>
 </body>
 </html>
