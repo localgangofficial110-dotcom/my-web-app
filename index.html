@@ -400,7 +400,20 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
+window.addEventListener('load', function() {
+    let w = 0, bar = document.getElementById('loading-bar'), text = document.getElementById('loading-text'), splash = document.getElementById('splash-screen');
+    let t = setInterval(() => {
+        if (w >= 100) { 
+            clearInterval(t); 
+            splash.style.opacity = '0'; 
+            setTimeout(() => splash.style.display = 'none', 500); 
+        } else { 
+            w++; 
+            bar.style.width = w + '%'; 
+            text.innerText = w + '%'; 
+        }
+    }, 25);
+});
         // আপনার সঠিক ফায়ারবেস কনফিগারেশন
         const firebaseConfig = {
           apiKey: "AIzaSyBUHhVpTpaA5BtoeKJkjT4yxj3SF1zb3cg",
