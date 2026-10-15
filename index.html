@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EarnXpress</title>
     <style>
-        .loading-container { width: 250px; background: rgba(255,255,255,0.1); border-radius: 20px; padding: 3px; margin-top: 15px; border: 1px solid rgba(255,255,255,0.2); }
-.loading-bar { height: 8px; width: 0%; background: #38bdf8; border-radius: 20px; transition: width 0.1s linear; }
-.loading-text { color: #38bdf8; font-size: 14px; margin-top: 8px; font-weight: bold; }
+        <div id="splash-screen" style="position: fixed; inset: 0; background: #0f172a; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 99999;">
+    <img src="splash.png" alt="EarnXpress Welcome" style="width: 80%; max-width: 320px; border-radius: 16px; margin-bottom: 20px;">
+    
+    <div class="loading-container">
+        <div id="loading-bar" class="loading-bar"></div>
+    </div>
+    <div id="loading-text" class="loading-text">0%</div>
+</div>
         body {
     font-family: sans-serif;
     margin: 0;
