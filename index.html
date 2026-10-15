@@ -492,20 +492,20 @@ window.addEventListener('load', function() {
             }
         });
 
-        // Splash Screen Function
-        function showSplashScreen() {
-            const splash = document.getElementById('splash-screen');
-            setTimeout(() => {
-                splash.style.opacity = '0';
-                setTimeout(() => {
-                    splash.style.display = 'none';
-                }, 500);
-            }, 2500);
-        }
-
-        window.onload = function() {
-            showSplashScreen();
-        };
+        window.addEventListener('load', function() {
+            let w = 0, bar = document.getElementById('loading-bar'), text = document.getElementById('loading-text'), splash = document.getElementById('splash-screen');
+            let t = setInterval(() => {
+                if (w >= 100) { 
+                    clearInterval(t); 
+                    splash.style.opacity = '0'; 
+                    setTimeout(() => splash.style.display = 'none', 500); 
+                } else { 
+                    w++; 
+                    bar.style.width = w + '%'; 
+                    text.innerText = w + '%'; 
+                }
+            }, 25);
+        });
         window.handleTask = () => {
             document.getElementById('task-modal').style.display = 'flex';
         }
